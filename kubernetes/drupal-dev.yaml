@@ -155,14 +155,6 @@ spec:
             secretKeyRef:
               name: mariadb-root-secret
               key: password
-        livenessProbe:
-          tcpSocket:
-            port: 80
-          initialDelaySeconds: 120
-          periodSeconds: 10
-          timeoutSeconds: 3 
-          successThreshold: 1
-          failureThreshold: 3
         readinessProbe:
           tcpSocket:
             port: 80
@@ -183,11 +175,11 @@ spec:
 #config-persistent-storage#        - name: drupal-dev-config-persistent-storage
 #config-persistent-storage#          mountPath: /var/www/docroot/config
 #modules-persistent-storage#        - name: drupal-dev-modules-persistent-storage
-#modules-persistent-storage#          mountPath: /var/www/docroot/modules/custom
+#modules-persistent-storage#          mountPath: /var/www/docroot/modules
 #themes-persistent-storage#        - name: drupal-dev-themes-persistent-storage
-#themes-persistent-storage#          mountPath: /var/www/docroot/themes/custom
+#themes-persistent-storage#          mountPath: /var/www/docroot/themes
 #sites-persistent-storage#        - name: drupal-dev-sites-persistent-storage
-#sites-persistent-storage#          mountPath: /var/www/docroot/sites/default
+#sites-persistent-storage#          mountPath: /var/www/docroot/sites
       volumes:
         - name: drupal-dev-php-config
           configMap:
