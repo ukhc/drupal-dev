@@ -85,21 +85,21 @@ then
 
 	echo "restore modules..."
 	kubectl exec $POD -- bash -c "rm -rf /var/www/docroot/modules/*"
-	kubectl cp ./backup/$BACKUP_FOLDER/modules $POD:/var/www/docroot
+	kubectl cp ./backup/$BACKUP_FOLDER/docroot/modules $POD:/var/www/docroot
 	echo "set permissions..."
-	kubectl exec $POD -- bash -c "chown -R www-data:www-data /var/www/docroot/modules/custom/*"
+	kubectl exec $POD -- bash -c "chown -R www-data:www-data /var/www/docroot/modules/*"
 
 	echo "restore themes..."
 	kubectl exec $POD -- bash -c "rm -rf /var/www/docroot/themes/*"
-	kubectl cp ./backup/$BACKUP_FOLDER/themes $POD:/var/www/docroot
+	kubectl cp ./backup/$BACKUP_FOLDER/docroot/themes $POD:/var/www/docroot
 	echo "set permissions..."
-	kubectl exec $POD -- bash -c "chown -R www-data:www-data /var/www/docroot/themes/custom/*"
+	kubectl exec $POD -- bash -c "chown -R www-data:www-data /var/www/docroot/themes/*"
 
 	echo "restore sites..."
 	kubectl exec $POD -- bash -c "rm -rf /var/www/docroot/sites/*"
-	kubectl cp ./backup/$BACKUP_FOLDER/sites $POD:/var/www/docroot
+	kubectl cp ./backup/$BACKUP_FOLDER/docroot/sites $POD:/var/www/docroot
 	echo "set permissions..."
-	kubectl exec $POD -- bash -c "chown -R www-data:www-data /var/www/docroot/sites/default/*"
+	kubectl exec $POD -- bash -c "chown -R www-data:www-data /var/www/docroot/sites/*"
 	
 fi
 
