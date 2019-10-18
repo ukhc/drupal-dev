@@ -70,11 +70,11 @@ done
 
 echo "check for the internal/drupal-dev docker image..."
 
-VERSION="$(cat version)"
+VERSION=$(cat version)
 docker images -q drupal-dev:$VERSION
 if [[ "$(docker images -q internal/drupal-dev:$VERSION 2> /dev/null)" == "" ]]; then
-	echo "drupal-dev docker image not found, building now..."
-	docker build -t internal/drupal-dev:$VERSION . --no-cache
+	echo "internal/drupal-dev docker image not found, building now..."
+	docker build -t internal/drupal-dev:"$VERSION" . --no-cache
 else
 	echo "internal/drupal-dev docker image found..."
 fi
@@ -82,7 +82,7 @@ fi
 ##########################
 
 echo "deploy drupal-dev..."
-mkdir -p /Users/Shared/Kubernetes/persistent-volumes/default/drupal-dev/docroot/composer
+mkdir -p /Users/Shared/Kubernetes/persistent-volumes/default/drupal-dev/composer
 mkdir -p /Users/Shared/Kubernetes/persistent-volumes/default/drupal-dev/docroot/modules
 mkdir -p /Users/Shared/Kubernetes/persistent-volumes/default/drupal-dev/docroot/themes
 mkdir -p /Users/Shared/Kubernetes/persistent-volumes/default/drupal-dev/docroot/sites
