@@ -23,3 +23,6 @@ RUN mkdir /var/www/composer \
     && mv /var/www/composer.* /var/www/composer \
     && ln -s /var/www/composer/composer.json /var/www/composer.json \
     && ln -s /var/www/composer/composer.lock /var/www/composer.lock
+    
+# create the config folder
+RUN mkdir /var/www/docroot/config
